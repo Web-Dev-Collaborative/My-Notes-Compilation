@@ -1,0 +1,711 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>01-positioning</title><style>
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	text-indent: -1.7em;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, YuMincho, "Yu Mincho", "Hiragino Mincho ProN", "Hiragino Mincho Pro", "Songti TC", "Songti SC", "SimSun", "Nanum Myeongjo", NanumMyeongjo, Batang, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC', 'Noto Sans CJK KR'; }
+
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC', 'Noto Sans Mono CJK KR'; }
+
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, YuMincho, "Yu Mincho", "Hiragino Mincho ProN", "Hiragino Mincho Pro", "Songti TC", "Songti SC", "SimSun", "Nanum Myeongjo", NanumMyeongjo, Batang, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC', 'Noto Sans CJK KR'; }
+
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC', 'Noto Sans Mono CJK KR'; }
+
+.highlight-default {
+}
+.highlight-gray {
+	color: rgb(155,154,151);
+}
+.highlight-brown {
+	color: rgb(100,71,58);
+}
+.highlight-orange {
+	color: rgb(217,115,13);
+}
+.highlight-yellow {
+	color: rgb(223,171,1);
+}
+.highlight-teal {
+	color: rgb(15,123,108);
+}
+.highlight-blue {
+	color: rgb(11,110,153);
+}
+.highlight-purple {
+	color: rgb(105,64,165);
+}
+.highlight-pink {
+	color: rgb(173,26,114);
+}
+.highlight-red {
+	color: rgb(224,62,62);
+}
+.highlight-gray_background {
+	background: rgb(235,236,237);
+}
+.highlight-brown_background {
+	background: rgb(233,229,227);
+}
+.highlight-orange_background {
+	background: rgb(250,235,221);
+}
+.highlight-yellow_background {
+	background: rgb(251,243,219);
+}
+.highlight-teal_background {
+	background: rgb(221,237,234);
+}
+.highlight-blue_background {
+	background: rgb(221,235,241);
+}
+.highlight-purple_background {
+	background: rgb(234,228,242);
+}
+.highlight-pink_background {
+	background: rgb(244,223,235);
+}
+.highlight-red_background {
+	background: rgb(251,228,228);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(55, 53, 47, 0.6);
+	fill: rgba(55, 53, 47, 0.6);
+}
+.block-color-brown {
+	color: rgb(100,71,58);
+	fill: rgb(100,71,58);
+}
+.block-color-orange {
+	color: rgb(217,115,13);
+	fill: rgb(217,115,13);
+}
+.block-color-yellow {
+	color: rgb(223,171,1);
+	fill: rgb(223,171,1);
+}
+.block-color-teal {
+	color: rgb(15,123,108);
+	fill: rgb(15,123,108);
+}
+.block-color-blue {
+	color: rgb(11,110,153);
+	fill: rgb(11,110,153);
+}
+.block-color-purple {
+	color: rgb(105,64,165);
+	fill: rgb(105,64,165);
+}
+.block-color-pink {
+	color: rgb(173,26,114);
+	fill: rgb(173,26,114);
+}
+.block-color-red {
+	color: rgb(224,62,62);
+	fill: rgb(224,62,62);
+}
+.block-color-gray_background {
+	background: rgb(235,236,237);
+}
+.block-color-brown_background {
+	background: rgb(233,229,227);
+}
+.block-color-orange_background {
+	background: rgb(250,235,221);
+}
+.block-color-yellow_background {
+	background: rgb(251,243,219);
+}
+.block-color-teal_background {
+	background: rgb(221,237,234);
+}
+.block-color-blue_background {
+	background: rgb(221,235,241);
+}
+.block-color-purple_background {
+	background: rgb(234,228,242);
+}
+.block-color-pink_background {
+	background: rgb(244,223,235);
+}
+.block-color-red_background {
+	background: rgb(251,228,228);
+}
+.select-value-color-default { background-color: rgba(206,205,202,0.5); }
+.select-value-color-gray { background-color: rgba(155,154,151, 0.4); }
+.select-value-color-brown { background-color: rgba(140,46,0,0.2); }
+.select-value-color-orange { background-color: rgba(245,93,0,0.2); }
+.select-value-color-yellow { background-color: rgba(233,168,0,0.2); }
+.select-value-color-green { background-color: rgba(0,135,107,0.2); }
+.select-value-color-blue { background-color: rgba(0,120,223,0.2); }
+.select-value-color-purple { background-color: rgba(103,36,222,0.2); }
+.select-value-color-pink { background-color: rgba(221,0,129,0.2); }
+.select-value-color-red { background-color: rgba(255,0,26,0.2); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="ab494e6d-07f1-4432-a68a-ab860cac385b" class="page sans"><header><h1 class="page-title">01-positioning</h1></header><div class="page-body"><p id="fcc23be2-4285-4f01-b9a2-ca9be606d997" class="">The CSS property <code>position</code> allows us to set the position of elements on a page and is an integral part of creating a Web page layout.</p><p id="94a1cb60-c256-421a-b57d-a834ccb79265" class="">In this reading, we’ll review the different types of CSS positions we can apply to elements and how they affect the layout of the page. If you <em>stick</em> with it, when you’re finished you should be <em>relatively</em> well-versed in CSS positioning properties and <em>absolutely</em> able to create professional page layouts!</p><p id="7639a4b0-7403-462b-8740-f24fb27663af" class="">Positioning elements allows us to manipulate where those elements appear on the page. Some position properties go with <em>the page flow</em>, while a couple of properties cause an element to be <em>removed from the flow</em>. The flow of a page refers to the relationship of block and inline elements before positioning or other layout changes occur. (<em>See the MDN doc on </em><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flow_Layout"><em>Flow Layout</em></a><em> for more info.</em>)</p><p id="7a6f519f-6397-428d-aef6-88d9fa2c9a32" class="">The <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/position">position</a> property accepts any of the following five values:</p><ul id="3b96bbc6-6299-44c7-8139-5c413c1b3753" class="bulleted-list"><li>Static</li></ul><ul id="894b5498-0661-49d6-806a-e2476b6b5a46" class="bulleted-list"><li>Relative</li></ul><ul id="3835a409-e903-41bc-bac8-df0e73c6a351" class="bulleted-list"><li>Absolute</li></ul><ul id="ce15b796-ef9d-417b-8476-9db28f02d2e3" class="bulleted-list"><li>Fixed</li></ul><ul id="ecf231c1-f079-4d23-81ad-da3d83bb3d4f" class="bulleted-list"><li>Sticky</li></ul><p id="62411545-6665-422f-80a5-30384b4cef25" class="">All properties except for <code>static</code> are used in conjunction with the properties <code>top</code>, <code>right</code>, <code>bottom</code> and <code>left</code> to ultimately determine an element’s position on the page. The <code>top</code>, <code>right</code>, <code>left</code> and <code>bottom</code> properties are all optional, except in the case of a sticky element, which requires at least one of the four properties to be set.</p><p id="342a2b74-896c-41d2-a67c-2d817dc03840" class="">For the rest of this article, the examples use the following HTML and base CSS.</p><pre id="f48fc53b-d68f-433c-b699-6eaa35ac80f2" class="code code-wrap"><code>&lt;div class=&quot;container&quot;&gt;
+  &lt;div class=&quot;element&quot; id=&quot;yellow-box&quot;&gt;1&lt;/div&gt;
+  &lt;div class=&quot;element&quot; id=&quot;pink-box&quot;&gt;2&lt;/div&gt;
+  &lt;div class=&quot;element&quot; id=&quot;blue-box&quot;&gt;3&lt;/div&gt;
+&lt;/div&gt;
+
+.container {
+  background-color: #2b2d2f;
+}
+
+.element {
+  box-sizing: border-box;
+  display: inline-block;
+  width: 100px;
+  height: 280px;
+  font-size: 36px;
+}
+
+#yellow-box {
+  background-color: #ffff00;
+}
+
+#pink-box {
+  background-color: #ff69b4;
+}
+
+#blue-box {
+  background-color: #00eeee;
+}</code></pre><p id="a1cc3679-0b07-4b6f-8734-6b9c52e50c3a" class="">That HTML and CSS results in this layout.</p><figure id="be077a57-7fab-4784-9d53-01aadac86495" class="image"><a href="https://appacademy-open-assets.s3-us-west-1.amazonaws.com/Module-Responsive-Design/layout/assets/static-pink-box.png"><img src="https://appacademy-open-assets.s3-us-west-1.amazonaws.com/Module-Responsive-Design/layout/assets/static-pink-box.png"/></a></figure><p id="8d24ab21-1bdc-4371-91e6-3aac55316604" class="">Statically positioned</p><p id="fc600091-4a38-40e7-9fbd-08211f9b751f" class="">Open up the <a href="https://codepen.io/aa-academics/pen/dyogoWM?editors=1100">Positioning Elements</a> CodePen to follow along with the changes in this article (as well as letting you experiment!).</p><h2 id="baa627b2-01e1-468e-b01f-6ffc5c2c6003" class="">Static positioning</h2><p id="1ae2c97a-b5e2-418d-8723-b0e6be42088b" class="">Static is the default position value of page elements. A <code>static</code> element is not considered to be <em>positioned</em> on the page, since it will appear normally according to the page flow. The properties <code>top</code>, <code>right</code>, <code>bottom</code>, <code>left</code> and <code>z-index</code> do not affect static elements.</p><p id="fcbd94fc-dea5-451d-b90c-69c958b30c63" class="">You probably won’t use this value much, unless you are overriding other values with it, but this is how to set an element to be static.</p><p id="9b38b6bd-d308-4a2b-86f4-b7d0bf7966b8" class=""><strong>CSS:</strong></p><pre id="e4fd59e9-06d8-4cdd-a4e0-b813b52def01" class="code code-wrap"><code>#pink-box {
+  background-color: #ff69b4;
+  position: static;
+}</code></pre><p id="c8fe4583-d4bc-4dec-aa0d-1a41653e8b8a" class="">Because you’re just explicitly setting the value to the value that it already is by default, nothing changes in the way the browser draws it.</p><figure id="5f36819a-ed62-4bc1-939a-b1ee006f1ae1" class="image"><a href="https://appacademy-open-assets.s3-us-west-1.amazonaws.com/Module-Responsive-Design/layout/assets/static-pink-box.png"><img src="https://appacademy-open-assets.s3-us-west-1.amazonaws.com/Module-Responsive-Design/layout/assets/static-pink-box.png"/></a></figure><p id="b4f19809-db7e-4417-ab14-241aa89d8052" class="">Statically positioned</p><h2 id="a69cf987-b727-460d-a86f-668d37f5a666" class="">Relative positioning</h2><p id="c7c8d6d7-07fd-4854-8942-0790a6221a1e" class="">A relatively positioned element remains in its original position in the page flow (like a static element) and can be offset from that position using the <code>top</code>, <code>right</code>, <code>bottom</code> and <code>left</code> properties. The element is positioned <em>relative to its initial place in the page flow</em>. Relative positioning creates a <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Positioning/Understanding_z_index/The_stacking_context">stacking context</a> – overlapping elements whose order can be set by the <code>z-index</code> property. (See the MDN doc on <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/z-index">z-index</a> for an example.)</p><p id="81ea5181-e145-464c-bc04-43f2ab9677c6" class="">The <code>top</code>, <code>right</code>, <code>bottom</code>, and <code>left</code> properties take a length which, as you likely recall, is a value and a unit of measurement (or percentage).</p><pre id="d9220331-fd77-4720-a53f-0b9029af7c8c" class="code code-wrap"><code>#pink-box {
+  background-color: #ff69b4;
+  bottom: 0;
+  left: -20px;
+  position: relative;
+  right: 0;
+  top: 0;
+}</code></pre><figure id="a29725fa-8936-4299-a9d7-9c16b132a552" class="image"><a href="https://appacademy-open-assets.s3-us-west-1.amazonaws.com/Module-Responsive-Design/layout/assets/relative-pink-box.png"><img src="https://appacademy-open-assets.s3-us-west-1.amazonaws.com/Module-Responsive-Design/layout/assets/relative-pink-box.png"/></a></figure><p id="f0653e75-c3a5-4391-ad3e-0ceabb08544f" class="">Relatively positioned pink box</p><h2 id="71587a9a-eb94-44ca-bb6c-38ce95de5d34" class="">Absolute positioning</h2><p id="7432a50d-9ee7-41a2-ac7e-4716e2b913f2" class="">An absolutely positioned element is removed from the page flow, and other elements around it act like it’s not there. The element is positioned in relation to its closest <em>positioned</em> ancestor, or, if one cannot be found, to the <code>&lt;html&gt;</code> document. It can be offset from that position using the <code>top</code>, <code>right</code>, <code>bottom</code> and <code>left</code> properties. Absolute positioning creates a <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Positioning/Understanding_z_index/The_stacking_context">stacking context</a> – overlapping elements whose order can be set by the <code>z-index</code> property. (See the MDN doc on <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/z-index">z-index</a> for an example.)</p><h3 id="4af4ff5d-5c3a-42b8-978a-f77bca6797b7" class="">Example of an absolutely positioned element</h3><p id="b1925a62-d5c3-4796-9930-0f893d98880f" class="">In the following CSS, you will note that the container element has a position set to “relative”. This is so the browser will calculate the position of any absolutely positioned children from its top-left corner.</p><pre id="268eb732-e204-4464-858f-16f52a2ccdc6" class="code code-wrap"><code>.container {
+  background-color: #2B2D2F;
+  position: relative;
+}
+
+#pink-box {
+  position: absolute;
+  top: 60px;
+}</code></pre><figure id="221bca23-0c06-4bdb-9b9d-3b0b48a55d56" class="image"><a href="https://appacademy-open-assets.s3-us-west-1.amazonaws.com/Module-Responsive-Design/layout/assets/absolute-pink-box.png"><img src="https://appacademy-open-assets.s3-us-west-1.amazonaws.com/Module-Responsive-Design/layout/assets/absolute-pink-box.png"/></a></figure><p id="b9ccc4cd-7924-4a18-b7f1-010326f303e0" class="">Absolutely positioned pink box</p><p id="90135f2c-6817-438b-b0e8-4e0018979390" class="">Things to note about how the pink box was positioned and laid out.</p><ul id="f308123f-2b20-4b21-8150-fd15e95fba6b" class="bulleted-list"><li>The pink box is positioned absolutely, meaning that it was removed from the flow of the document. The image above shows us that the blue box has filled in the place of pink box because the browser does not consider the pink box to be in the normal left-to-right layout of the content.</li></ul><ul id="8ad114a5-9ada-4265-a299-08973faa7c16" class="bulleted-list"><li>The pink box is stacked on top of the static blue box (static because that is the default <code>position</code> value). When the browser removed the pink box from the flow, it put it in its own virtual layer <em>above</em> the statically positioned elements.</li></ul><ul id="9d831d02-99de-486e-b9c3-b51aa8c6dc7c" class="bulleted-list"><li>Again, it’s important to note that the container element has its <code>position</code> set to “relative”. This is so the browser will position the pink box relative to its parent.</li></ul><p id="7d757819-470a-4d71-9d2e-ea63efa4055d" class="">It’s important to do that relative thing if you want the absolute positioning of the element to be calculated from the top-left corner of the closest positioned ancestor element, in this case, the container element.</p><h3 id="a903fcd1-ba73-4a12-9e60-c2436e7fce39" class="">Example of two absolutely positioned elements</h3><p id="ae6e9170-e477-4ef0-aee5-23938f071593" class="">What happens if you chose to absolutely position the pink box <em>and</em> the blue box? What do you think will happen? Try it out in the CodePen.</p><pre id="75a3f8d8-4adc-4e28-9439-6bfba553209f" class="code code-wrap"><code>.container {
+  background-color: #2B2D2F;
+  position: relative;
+}
+
+#pink-box {
+  position: absolute;
+  top: 60px;
+}
+
+#blue-box {
+  position: absolute;
+}</code></pre><figure id="ec5bba12-b71b-4ba6-b70c-6739b54f0cda" class="image"><a href="https://appacademy-open-assets.s3-us-west-1.amazonaws.com/Module-Responsive-Design/layout/assets/absolute-blue-box.png"><img src="https://appacademy-open-assets.s3-us-west-1.amazonaws.com/Module-Responsive-Design/layout/assets/absolute-blue-box.png"/></a></figure><p id="58c71034-e3ae-437e-8907-26c4ab9ced19" class="">Two absolutely positioned elements</p><p id="bb32478c-3005-4f10-a446-0728e2dc4051" class="">In this case, both of the pink and blue boxes were taken out of the normal flow. The pink box shows up where it did before. But, now, because the blue box is <em>layered</em>, it shows up <strong>on top of</strong> the pink box. This is how you can make interesting and neat UIs that have elements on top of one another.</p><h3 id="f0e43c6b-ff4b-4000-9aff-e0cb33bfc333" class="">Example of an absolutely positioned element using bottom instead of top</h3><p id="708939bd-bcbb-4d0f-a09e-84705cae8871" class="">Here is an example where you can see how it changes when you don’t have a positioned ancestor element. The CSS sets the pink box’s <code>bottom</code> value to 60 pixels, rather than the <code>top</code>. This pushes the element 60 pixels <em>up</em> from the bottom of the parent element’s bottom.</p><pre id="5aa9d69f-9d3e-4399-9763-a83e3383e2ac" class="code code-wrap"><code>.container {
+  background-color: #2b2d2f;
+  position: relative;
+}
+
+#pink-box {
+  background-color: #ff69b4;
+  bottom: 60px;
+  position: absolute;
+}</code></pre><figure id="9ae95237-134e-4851-9783-6a37e9ef17d9" class="image"><a href="https://appacademy-open-assets.s3-us-west-1.amazonaws.com/Module-Responsive-Design/layout/assets/relative-parent-absolute-child.png"><img src="https://appacademy-open-assets.s3-us-west-1.amazonaws.com/Module-Responsive-Design/layout/assets/relative-parent-absolute-child.png"/></a></figure><p id="fe2c119e-a7c8-4d98-9cc9-d59469d73978" class="">Relative parent and absolute child shifted up</p><p id="c78bd80b-123c-404b-b012-de6f7495ec55" class="">You can see that the browser has shifted the pink box up, so much so, that you can’t see the number “2” anymore.</p><p id="f74e4ea3-1220-4698-b508-ac83b541abed" class="">If you had not relative positioned the container element, the browser would try to find the bottom of its nearest positioned ancestor. Since none occurs, the browser assumes you meant that it should be 60 pixels from the <em>bottom of the document</em>!</p><pre id="a0bd2b1a-5a95-4d11-8265-d41f9c71fb8d" class="code code-wrap"><code>.container {
+  background-color: #2b2d2f;
+}
+
+#pink-box {
+  background-color: #ff69b4;
+  bottom: 60px;
+  position: absolute;
+}</code></pre><figure id="b27a1852-c96f-4caa-bf8d-1a25e8050f0f" class="image"><a href="https://appacademy-open-assets.s3-us-west-1.amazonaws.com/Module-Responsive-Design/layout/assets/static-parent-absolute-child.png"><img src="https://appacademy-open-assets.s3-us-west-1.amazonaws.com/Module-Responsive-Design/layout/assets/static-parent-absolute-child.png"/></a></figure><h2 id="af23a0ac-29ba-4e52-8b99-122224aff683" class="">Fixed positioning</h2><p id="814d5433-7069-43f8-836e-f4557360e3b4" class="">A fixed element is removed from the page flow, like an absolutely positioned element. However, unlike an absolutely positioned element, a fixed element’s position is relative to the <code>&lt;html&gt;</code> document itself and not to an ancestor element. It is positioned using the <code>top</code>, <code>right</code>, <code>bottom</code> and <code>left</code> properties. Fixed positioning creates a <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Positioning/Understanding_z_index/The_stacking_context">stacking context</a> – overlapping elements whose order can be set by the <code>z-index</code> property. (See the MDN doc on <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/z-index">z-index</a> for an example.)</p><p id="87702b68-fdbf-4b1c-83a9-5796dac60ae2" class="">A fixed element will remain in the same spot on the page, regardless of the size of the window or whether a user scrolls.</p><pre id="f658082c-92fe-49bc-bcc4-7e17a9bae597" class="code code-wrap"><code>#pink-box {
+  background-color: #ff69b4;
+  left: 300px;
+  position: fixed;
+  top: 15%;
+}</code></pre><p id="3fb11416-c15b-4118-b7ca-a3050c6210ce" class="">Here it is without any scrolling.</p><figure id="46f9b7ca-e8d0-4f50-a6c4-86d069037706" class="image"><a href="https://appacademy-open-assets.s3-us-west-1.amazonaws.com/Module-Responsive-Design/layout/assets/fixed-element.png"><img src="https://appacademy-open-assets.s3-us-west-1.amazonaws.com/Module-Responsive-Design/layout/assets/fixed-element.png"/></a></figure><p id="ff357430-a7dd-49fe-9186-3438ad1ae299" class="">Here it is with some scrolling.</p><figure id="a4ec5c81-6deb-4514-9779-f078c890ba6d" class="image"><a href="https://appacademy-open-assets.s3-us-west-1.amazonaws.com/Module-Responsive-Design/layout/assets/fixed-element-scroll.png"><img src="https://appacademy-open-assets.s3-us-west-1.amazonaws.com/Module-Responsive-Design/layout/assets/fixed-element-scroll.png"/></a></figure><p id="243fc08c-b7a0-42ac-9c57-54ade7ee5fce" class="">Fixed positioning can be useful for things like nav bars, buttons, links, videos, etc. that we want to keep visible as the user scrolls. Ensure that elements positioned with an absolute or fixed value do not obscure other content when the page is zoomed to increase text size.</p><h2 id="37ede190-bad2-4bd7-9cba-b62d5052a5a6" class="">Sticky positioning</h2><p id="7f36dfac-16db-4bd1-975a-751b512c8dea" class="">A sticky element remains in its original position in the page flow, and it is positioned relative to its closest block-level ancestor and any <em>scrolling</em> ancestors (created when <code>overflow</code> is <code>hidden</code>, <code>scroll</code>, <code>auto</code>, or <code>overlay</code>). It behaves like a relatively positioned element until the point at which you would normally scroll past it in the viewport. At that scrolling point, the element “sticks” to the page wherever it has been positioned by the <code>top</code>, <code>left</code>, <code>bottom</code> and <code>right</code> properties. Sticky positioning creates a <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Positioning/Understanding_z_index/The_stacking_context">stacking context</a> – overlapping elements whose order can be set by the <code>z-index</code> property. (See the MDN doc on <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/z-index">z-index</a> for an example.)</p><p id="df77f588-41ec-4d25-8722-f8e6168ca03c" class="">You must set at least one threshold value using <code>top</code>, <code>right</code>, <code>bottom</code> or <code>left</code> in order for sticky positioning to work. A sticky element will start off as <em>relatively</em> positioned until you scroll past its original position – at which point it will be <em>fixed</em> to the position you specified.</p><pre id="08840639-ab94-4086-9c16-e7956b5b3dbc" class="code code-wrap"><code>#pink-box {
+  background-color: #FF69B4;
+  position: sticky;
+  top: 60px;
+}</code></pre><p id="3a735a0e-c67c-4d45-9c6d-2b6a542394d8" class="">Here is what it looks like without any scrolling.</p><figure id="c9cdb235-5f34-4d7d-8b1b-2b85191e3816" class="image"><a href="https://appacademy-open-assets.s3-us-west-1.amazonaws.com/Module-Responsive-Design/layout/assets/sticky-element.png"><img src="https://appacademy-open-assets.s3-us-west-1.amazonaws.com/Module-Responsive-Design/layout/assets/sticky-element.png"/></a></figure><p id="ccee52de-4602-476d-8775-6ad7b6571865" class="">Sticky without scrolling</p><p id="5a27f197-1cac-4e2a-9487-bf738088ca7b" class="">Once you scroll, the element will stick in place when it gets where it should not scroll past.</p><figure id="cb528eef-131f-4b24-a1bf-11fcbac4fdcb" class="image"><a href="https://appacademy-open-assets.s3-us-west-1.amazonaws.com/Module-Responsive-Design/layout/assets/sticky-element-scroll.png"><img src="https://appacademy-open-assets.s3-us-west-1.amazonaws.com/Module-Responsive-Design/layout/assets/sticky-element-scroll.png"/></a></figure><p id="bac1a137-f132-4a22-a8d3-d3e5421893e7" class="">Sticky with scrolling</p><p id="9961c764-0730-4348-97ed-4e8648609ad1" class="">A good use case for sticky positioning is for headers in scrollable lists. Here’s and example of headers in a list having sticky positioning. They act relative until they get to the top of the scrollable area. At that point, they become fixed until the bottom of their parent element pushes them off of the screen as the parent element scrolls off of the screen.</p><figure id="045ec05f-9d91-4ac1-a792-eabbb704a5e9" class="image"><a href="https://appacademy-open-assets.s3-us-west-1.amazonaws.com/Module-Responsive-Design/layout/assets/css-layout-sticky-positioning.gif"><img src="https://appacademy-open-assets.s3-us-west-1.amazonaws.com/Module-Responsive-Design/layout/assets/css-layout-sticky-positioning.gif"/></a></figure><p id="33dfe4f9-e5ff-4819-93a4-e4650b5eb147" class="">sticky section headers</p><p id="7372547d-72bf-4478-ac15-4124c9a33e1a" class=""><em><strong>Note:</strong></em><em> Like fixed positioning, sticky positioning can be useful for things like nav bars, buttons, links, videos, etc. that we want to keep visible as the user scrolls. One use-case would be keeping a section or menu heading at the top of the page until the user scrolls past that section into a new one. Again, use with caution, and always keep accessibility in mind.</em></p></div></article></body></html>
